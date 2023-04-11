@@ -28,17 +28,17 @@ const updateSpeed = 10
 
 const baseLifespan = 365 * 70
 
-const baseGameSpeed = 1
+const baseGameSpeed = 1/6
 
 const permanentUnlocks = ["Scheduling", "Shop", "Automation", "Quick task display"]
 
 const jobBaseData = {
-    "Beggar": {name: "Beggar", maxXp: 50, income: 5},
-    "Farmer": {name: "Farmer", maxXp: 100, income: 9},
-    "Fisherman": {name: "Fisherman", maxXp: 200, income: 15},
-    "Miner": {name: "Miner", maxXp: 400, income: 40},
-    "Blacksmith": {name: "Blacksmith", maxXp: 800, income: 80},
-    "Merchant": {name: "Merchant", maxXp: 1600, income: 150},
+    "Beggar": {name: "Beggar", maxXp: 50, income: 1*100},
+    "Street Entertainer": {name: "Street Entertainer", maxXp: 100, income: 1.75*100},
+    "Newspaper Vendor": {name: "Newspaper Vendor", maxXp: 200, income: 3*100},
+    "Janitor": {name: "Janitor", maxXp: 400, income: 7*100},
+    "Construction Worker": {name: "Construction Worker", maxXp: 800, income: 14*100},
+    "Shop Clerk": {name: "Shop Clerk", maxXp: 1600, income: 40*100},
 
     "Squire": {name: "Squire", maxXp: 100, income: 5},
     "Footman": {name: "Footman", maxXp: 1000, income: 50},
@@ -62,6 +62,7 @@ const skillBaseData = {
     "Productivity": {name: "Productivity", maxXp: 100, effect: 0.01, description: "Job xp"},
     "Bargaining": {name: "Bargaining", maxXp: 100, effect: -0.01, description: "Expenses"},
     "Meditation": {name: "Meditation", maxXp: 100, effect: 0.01, description: "Happiness"},
+    "Intelligence": {name: "Intelligence", maxXp: 100, effect: 0.01, description: "Job pay"},
 
     "Strength": {name: "Strength", maxXp: 100, effect: 0.01, description: "Military pay"},
     "Battle tactics": {name: "Battle tactics", maxXp: 100, effect: 0.01, description: "Military xp"},
@@ -102,7 +103,7 @@ const itemBaseData = {
 }
 
 const jobCategories = {
-    "Common work": ["Beggar", "Farmer", "Fisherman", "Miner", "Blacksmith", "Merchant"],
+    "Common work": ["Beggar", "Street Entertainer", "Newspaper Vendor", "Construction Worker", "Janitor", "Shop Clerk"],
     "Military" : ["Squire", "Footman", "Veteran footman", "Knight", "Veteran knight", "Elite knight", "Holy knight", "Legendary knight"],
     "The Arcane Association" : ["Student", "Apprentice mage", "Mage", "Wizard", "Master wizard", "Chairman"]
 }
@@ -132,12 +133,12 @@ const headerRowColors = {
 }
 
 const tooltips = {
-    "Beggar": "Struggle day and night for a couple of copper coins. It feels like you are at the brink of death each day.",
-    "Farmer": "Plow the fields and grow the crops. It's not much but it's honest work.",
-    "Fisherman": "Reel in various fish and sell them for a handful of coins. A relaxing but still a poor paying job.",
-    "Miner": "Delve into dangerous caverns and mine valuable ores. The pay is quite meager compared to the risk involved.",
-    "Blacksmith": "Smelt ores and carefully forge weapons for the military. A respectable and OK paying commoner job.",
-    "Merchant": "Travel from town to town, bartering fine goods. The job pays decently well and is a lot less manually-intensive.",
+    "Beggar": "Struggle day and night for a couple of dimes. It feels like you are at the brink of death each day.",
+    "Street Entertainer": "Use what talent you have left to earn a couple bucks on the streets. It's not much but it's entertaining work.",
+    "Newspaper Vendor": "Go around town selling newspapers. A lot of effort for such a low pay.",
+    "Janitor": "Mop floors and empty trash cans around town. The pay is bad and the smell is worse.",
+    "Construction Worker": "Carry construction material and occassionally hammer a nail or two. The pay is alright but comes with a lot heavy physical work.",
+    "Shop Clerk": "Sit behind a cash register and occasionally restock shelves. The job pays decently well and is a lot less manually-intensive.",
 
     "Squire": "Carry around your knight's shield and sword along the battlefield. Very meager pay but the work experience is quite valuable.",
     "Footman": "Put down your life to battle with enemy soldiers. A courageous, respectable job but you are still worthless in the grand scheme of things.",
@@ -159,6 +160,7 @@ const tooltips = {
     "Productivity": "Learn to procrastinate less at work and receive more job experience per day.",
     "Bargaining": "Study the tricks of the trade and persuasive skills to lower any type of expense.",
     "Meditation": "Fill your mind with peace and tranquility to tap into greater happiness from within.",
+    "Intelligence": "Improve your intellect through studying and reading. More intelligent workers are paid more.",
 
     "Strength": "Condition your body and strength through harsh training. Stronger individuals are paid more in the military.",
     "Battle tactics": "Create and revise battle strategies, improving experience gained in the military.",
@@ -227,6 +229,7 @@ function addMultipliers() {
 
         if (task instanceof Job) {
             task.incomeMultipliers.push(task.getLevelMultiplier.bind(task))
+            task.incomeMultipliers.push(getBindedTaskEffect("Intelligence"))
             task.incomeMultipliers.push(getBindedTaskEffect("Demon's wealth"))
             task.xpMultipliers.push(getBindedTaskEffect("Productivity"))
             task.xpMultipliers.push(getBindedItemEffect("Personal squire"))    
@@ -1067,11 +1070,11 @@ gameData.requirements = {
 
     //Common work
     "Beggar": new TaskRequirement([getTaskElement("Beggar")], []),
-    "Farmer": new TaskRequirement([getTaskElement("Farmer")], [{task: "Beggar", requirement: 10}]),
-    "Fisherman": new TaskRequirement([getTaskElement("Fisherman")], [{task: "Farmer", requirement: 10}]),
-    "Miner": new TaskRequirement([getTaskElement("Miner")], [{task: "Strength", requirement: 10}, {task: "Fisherman", requirement: 10}]),
-    "Blacksmith": new TaskRequirement([getTaskElement("Blacksmith")], [{task: "Strength", requirement: 30}, {task: "Miner", requirement: 10}]),
-    "Merchant": new TaskRequirement([getTaskElement("Merchant")], [{task: "Bargaining", requirement: 50}, {task: "Blacksmith", requirement: 10}]),
+    "Street Entertainer": new TaskRequirement([getTaskElement("Street Entertainer")], [{task: "Beggar", requirement: 10}]),
+    "Newspaper Vendor": new TaskRequirement([getTaskElement("Newspaper Vendor")], [{task: "Street Entertainer", requirement: 10}]),
+    "Janitor": new TaskRequirement([getTaskElement("Janitor")], [{task: "Newspaper Vendor", requirement: 10}]),
+    "Construction Worker": new TaskRequirement([getTaskElement("Construction Worker")], [{task: "Strength", requirement: 25}, {task: "Janitor", requirement: 10}]),
+    "Shop Clerk": new TaskRequirement([getTaskElement("Shop Clerk")], [{task: "Bargaining", requirement: 50}, {task: "Intelligence", requirement: 30}, {task: "Construction Worker", requirement: 10}]),
 
     //Military 
     "Squire": new TaskRequirement([getTaskElement("Squire")], [{task: "Strength", requirement: 5}]),
@@ -1095,6 +1098,7 @@ gameData.requirements = {
     "Concentration": new TaskRequirement([getTaskElement("Concentration")], []),
     "Productivity": new TaskRequirement([getTaskElement("Productivity")], [{task: "Concentration", requirement: 5}]),
     "Bargaining": new TaskRequirement([getTaskElement("Bargaining")], [{task: "Concentration", requirement: 20}]),
+    "Intelligence": new TaskRequirement([getTaskElement("Intelligence")], [{task: "Concentration", requirement: 25}, {task: "Productivity", requirement: 15}]),
     "Meditation": new TaskRequirement([getTaskElement("Meditation")], [{task: "Concentration", requirement: 30}, {task: "Productivity", requirement: 20}]),
 
     //Combat
