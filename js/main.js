@@ -24,11 +24,11 @@ var skillWithLowestMaxXp = null
 const autoPromoteElement = document.getElementById("autoPromote")
 const autoLearnElement = document.getElementById("autoLearn")
 
-const updateSpeed = 20
+const updateSpeed = 10
 
 const baseLifespan = 365 * 70
 
-const baseGameSpeed = 7
+const baseGameSpeed = 1
 
 const permanentUnlocks = ["Scheduling", "Shop", "Automation", "Quick task display"]
 
@@ -799,7 +799,7 @@ function format(number) {
 function formatCoins(coins, element) {
     var tiers = ["$"]
     var colors = {
-        "$": "#7bbd7f",
+        "$": "#2b994a",
         "¢": "#a8a8a8"
     }
     var leftOver = coins
