@@ -103,7 +103,7 @@ const itemBaseData = {
 }
 
 const jobCategories = {
-    "Common work": ["Beggar", "Street Entertainer", "Newspaper Vendor", "Construction Worker", "Janitor", "Shop Clerk"],
+    "Common work": ["Beggar", "Street entertainer", "Newspaper vendor", "Construction worker", "Janitor", "Shop clerk"],
     "Military" : ["Squire", "Footman", "Veteran footman", "Knight", "Veteran knight", "Elite knight", "Holy knight", "Legendary knight"],
     "The Arcane Association" : ["Student", "Apprentice mage", "Mage", "Wizard", "Master wizard", "Chairman"]
 }
@@ -134,11 +134,11 @@ const headerRowColors = {
 
 const tooltips = {
     "Beggar": "Struggle day and night for a couple of dimes. It feels like you are at the brink of death each day.",
-    "Street Entertainer": "Use what talent you have left to earn a couple bucks on the streets. It's not much but it's entertaining work.",
-    "Newspaper Vendor": "Go around town selling newspapers. A lot of effort for such a low pay.",
+    "Street entertainer": "Use what talent you have left to earn a couple bucks on the streets. It's not much but it's entertaining work.",
+    "Newspaper vendor": "Go around town selling newspapers. A lot of effort for such a low pay.",
     "Janitor": "Mop floors and empty trash cans around town. The pay is bad and the smell is worse.",
-    "Construction Worker": "Carry construction material and occassionally hammer a nail or two. The pay is alright but comes with a lot heavy physical work.",
-    "Shop Clerk": "Sit behind a cash register and occasionally restock shelves. The job pays decently well and is a lot less manually-intensive.",
+    "Construction worker": "Carry construction material and occassionally hammer a nail or two. The pay is alright but comes with a lot heavy physical work.",
+    "Shop clerk": "Sit behind a cash register and occasionally restock shelves. The job pays decently well and is a lot less manually-intensive.",
 
     "Squire": "Carry around your knight's shield and sword along the battlefield. Very meager pay but the work experience is quite valuable.",
     "Footman": "Put down your life to battle with enemy soldiers. A courageous, respectable job but you are still worthless in the grand scheme of things.",
