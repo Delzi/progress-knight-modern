@@ -554,30 +554,35 @@ function updateTaskRows() {
     for (key in gameData.taskData) {
         var task = gameData.taskData[key]
         var row = document.getElementById("row " + task.name)
-        row.getElementsByClassName("level")[0].textContent = task.level
-        row.getElementsByClassName("xpGain")[0].textContent = format(task.getXpGain())
-        row.getElementsByClassName("xpLeft")[0].textContent = format(task.getXpLeft())
+        print(row)
+        if (row) {
+            row.getElementsByClassName("level")[0].textContent = task.level
+            row.getElementsByClassName("xpGain")[0].textContent = format(task.getXpGain())
+            row.getElementsByClassName("xpLeft")[0].textContent = format(task.getXpLeft())
 
-        var maxLevel = row.getElementsByClassName("maxLevel")[0]
-        maxLevel.textContent = task.maxLevel
-        gameData.rebirthOneCount > 0 ? maxLevel.classList.remove("hidden") : maxLevel.classList.add("hidden")
+            var maxLevel = row.getElementsByClassName("maxLevel")[0]
+            maxLevel.textContent = task.maxLevel
+            gameData.rebirthOneCount > 0 ? maxLevel.classList.remove("hidden") : maxLevel.classList.add("hidden")
 
-        var progressFill = row.getElementsByClassName("progressFill")[0]
-        progressFill.style.width = task.xp / task.getMaxXp() * 100 + "%"
-        task == gameData.currentJob || task == gameData.currentSkill ? progressFill.classList.add("current") : progressFill.classList.remove("current")
+            var progressFill = row.getElementsByClassName("progressFill")[0]
+            progressFill.style.width = task.xp / task.getMaxXp() * 100 + "%"
+            task == gameData.currentJob || task == gameData.currentSkill ? progressFill.classList.add("current") : progressFill.classList.remove("current")
 
-        var valueElement = row.getElementsByClassName("value")[0]
-        valueElement.getElementsByClassName("income")[0].style.display = task instanceof Job
-        valueElement.getElementsByClassName("effect")[0].style.display = task instanceof Skill
+            var valueElement = row.getElementsByClassName("value")[0]
+            valueElement.getElementsByClassName("income")[0].style.display = task instanceof Job
+            valueElement.getElementsByClassName("effect")[0].style.display = task instanceof Skill
 
-        var skipSkillElement = row.getElementsByClassName("skipSkill")[0]
-        skipSkillElement.style.display = task instanceof Skill && autoLearnElement.checked ? "block" : "none"
+            var skipSkillElement = row.getElementsByClassName("skipSkill")[0]
+            skipSkillElement.style.display = task instanceof Skill && autoLearnElement.checked ? "block" : "none"
 
-        if (task instanceof Job) {
-            formatCoins(task.getIncome(), valueElement.getElementsByClassName("income")[0])
-        } else {
-            valueElement.getElementsByClassName("effect")[0].textContent = task.getEffectDescription()
-        }
+            if (task instanceof Job) {
+                formatCoins(task.getIncome(), valueElement.getElementsByClassName("income")[0])
+            } else {
+                valueElement.getElementsByClassName("effect")[0].textContent = task.getEffectDescription()
+            }
+          } else {
+            console.log("Not found");
+          }
     }
 }
 
