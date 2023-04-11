@@ -797,7 +797,7 @@ function format(number) {
 }
 
 function formatCoins(coins, element) {
-    var tiers = ["d]
+    var tiers = ["d"]
     var colors = {
         "d": "##7bbd7f",
         "c": "#a8a8a8"
