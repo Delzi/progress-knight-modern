@@ -797,25 +797,25 @@ function format(number) {
 }
 
 function formatCoins(coins, element) {
-    var tiers = ["d"]
+    var tiers = ["$"]
     var colors = {
-        "d": "#7bbd7f",
-        "c": "#a8a8a8"
+        "$": "#7bbd7f",
+        "¢": "#a8a8a8"
     }
     var leftOver = coins
     var i = 0
     for (tier of tiers) {
         var x = Math.floor(leftOver / Math.pow(10, (tiers.length - i) * 2))
         var leftOver = Math.floor(leftOver - x * Math.pow(10, (tiers.length - i) * 2))
-        var text = format(String(x)) + tier + " "
+        var text =  tier + format(String(x)) + " "
         element.children[i].textContent = x > 0 ? text : ""
         element.children[i].style.color = colors[tier]
         i += 1
     }
     if (leftOver == 0 && coins > 0) {element.children[3].textContent = ""; return}
-    var text = String(Math.floor(leftOver)) + "c"
+    var text = String(Math.floor(leftOver)) + "¢"
     element.children[3].textContent = text
-    element.children[3].style.color = colors["c"]
+    element.children[3].style.color = colors["¢"]
 }
 
 function getTaskElement(taskName) {
