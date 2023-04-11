@@ -3,7 +3,7 @@ var gameData = {
     itemData: {},
 
     coins: 0,
-    days: 365 * 14,
+    days: 365 * 18,
     evil: 0,
     paused: false,
     timeWarpingEnabled: true,
@@ -28,7 +28,7 @@ const updateSpeed = 20
 
 const baseLifespan = 365 * 70
 
-const baseGameSpeed = 4
+const baseGameSpeed = 7
 
 const permanentUnlocks = ["Scheduling", "Shop", "Automation", "Quick task display"]
 
@@ -799,7 +799,7 @@ function format(number) {
 function formatCoins(coins, element) {
     var tiers = ["d"]
     var colors = {
-        "d": "##7bbd7f",
+        "d": "#7bbd7f",
         "c": "#a8a8a8"
     }
     var leftOver = coins
@@ -867,7 +867,7 @@ function rebirthReset() {
     setTab(jobTabButton, "jobs")
 
     gameData.coins = 0
-    gameData.days = 365 * 14
+    gameData.days = 365 * 18
     gameData.currentJob = gameData.taskData["Beggar"]
     gameData.currentSkill = gameData.taskData["Concentration"]
     gameData.currentProperty = gameData.itemData["Homeless"]
