@@ -33,21 +33,21 @@ const baseGameSpeed = 1/2
 const permanentUnlocks = ["Scheduling", "Shop", "Automation", "Quick task display"]
 
 const jobBaseData = {
-    "Beggar": {name: "Beggar", maxXp: 50, income: 1*100},
-    "Street entertainer": {name: "Street entertainer", maxXp: 100, income: 1.75*100},
-    "Newspaper vendor": {name: "Newspaper vendor", maxXp: 200, income: 3*100},
-    "Janitor": {name: "Janitor", maxXp: 400, income: 7*100},
-    "Construction worker": {name: "Construction worker", maxXp: 800, income: 14*100},
-    "Shop clerk": {name: "Shop clerk", maxXp: 1600, income: 40*100},
+    "Beggar": {name: "Beggar", maxXp: 25, income: 0.5*100},
+    "Street entertainer": {name: "Street entertainer", maxXp: 50, income: 0.85*100},
+    "Newspaper vendor": {name: "Newspaper vendor", maxXp: 100, income: 3*100},
+    "Janitor": {name: "Janitor", maxXp: 200, income: 12*100},
+    "Construction worker": {name: "Construction worker", maxXp: 400, income: 22*100},
+    "Shop clerk": {name: "Shop clerk", maxXp: 800, income: 45*100},
 
-    "Recruit": {name: "Recruit", maxXp: 100, income: 5},
-    "Private": {name: "Private", maxXp: 1000, income: 50},
-    "Corporal": {name: "Corporal", maxXp: 10000, income: 120},
-    "Sergeant": {name: "Sergeant", maxXp: 100000, income: 300},
-    "Lieutenant": {name: "Lieutenant", maxXp: 1000000, income: 1000},
-    "Major": {name: "Major", maxXp: 7500000, income: 3000},
-    "Lieutenant General": {name: "Lieutenant General", maxXp: 40000000, income: 15000},
-    "Secretary of Defense": {name: "Secretary of Defense", maxXp: 150000000, income: 50000},
+    "Recruit": {name: "Recruit", maxXp: 50, income: 5*100},
+    "Private": {name: "Private", maxXp: 500, income: 50*100},
+    "Corporal": {name: "Corporal", maxXp: 5000, income: 120*100},
+    "Sergeant": {name: "Sergeant", maxXp: 50000, income: 300*100},
+    "Lieutenant": {name: "Lieutenant", maxXp: 500000, income: 1000*100},
+    "Major": {name: "Major", maxXp: 375000, income: 3000*100},
+    "Lieutenant General": {name: "Lieutenant General", maxXp: 20000000, income: 15000*100},
+    "Secretary of Defense": {name: "Secretary of Defense", maxXp: 75000000, income: 50000*100},
 
     "Student": {name: "Student", maxXp: 100000, income: 100},
     "Apprentice mage": {name: "Apprentice mage", maxXp: 1000000, income: 1000},
@@ -68,7 +68,7 @@ const skillBaseData = {
     "Battle tactics": {name: "Battle tactics", maxXp: 100, effect: 0.01, description: "Military xp"},
     "Muscle memory": {name: "Muscle memory", maxXp: 100, effect: 0.01, description: "Strength xp"},
 
-    "Mana control": {name: "Mana control", maxXp: 100, effect: 0.01, description: "T.A.A. xp"},
+    "Mind capacity": {name: "Mind capacity", maxXp: 100, effect: 0.01, description: "T.A.A. xp"},
     "Immortality": {name: "Immortality", maxXp: 100, effect: 0.01, description: "Longer lifespan"},
     "Time warping": {name: "Time warping", maxXp: 100, effect: 0.01, description: "Gamespeed"},
     "Super immortality": {name: "Super immortality", maxXp: 100, effect: 0.01, description: "Longer lifespan"},
@@ -84,20 +84,20 @@ const skillBaseData = {
 
 const itemBaseData = {
     "Homeless": {name: "Homeless", expense: 0, effect: 1},
-    "Tent": {name: "Tent", expense: 15, effect: 1.4},
-    "Wooden hut": {name: "Wooden hut", expense: 100, effect: 2},
-    "Cottage": {name: "Cottage", expense: 750, effect: 3.5},
-    "House": {name: "House", expense: 3000, effect: 6},
-    "Large house": {name: "Large house", expense: 25000, effect: 12},
-    "Small palace": {name: "Small palace", expense: 300000, effect: 25},
-    "Grand palace": {name: "Grand palace", expense: 5000000, effect: 60},
+    "Shared room": {name: "Shared room", expense: 3*100, effect: 1.4},
+    "Rented room": {name: "Rented room", expense: 10*100, effect: 2},
+    "Small apartment": {name: "Small apartment", expense: 50*100, effect: 3.5},
+    "House": {name: "House", expense: 300*100, effect: 6},
+    "Large house": {name: "Large house", expense: 1000*100, effect: 12},
+    "Small manor": {name: "Small manor", expense: 20000*100, effect: 25},
+    "Manor": {name: "Manor", expense: 5000000*100, effect: 60},
 
     "Book": {name: "Book", expense: 10, effect: 1.5, description: "Skill xp"},
     "Dumbbells": {name: "Dumbbells", expense: 50, effect: 1.5, description: "Strength xp"},
-    "Personal squire": {name: "Personal squire", expense: 200, effect: 2, description: "Job xp"},
-    "Steel longsword": {name: "Steel longsword", expense: 1000, effect: 2, description: "Military xp"},
-    "Butler": {name: "Butler", expense: 7500, effect: 1.5, description: "Happiness"},
-    "Sapphire charm": {name: "Sapphire charm", expense: 50000, effect: 3, description: "Magic xp"},
+    "Training assistant": {name: "Training assistant", expense: 200, effect: 2, description: "Job xp"},
+    "XM7": {name: "XM7", expense: 1000, effect: 2, description: "Military xp"},
+    "Personal assistant": {name: "Personal assistant", expense: 7500, effect: 1.5, description: "Happiness"},
+    "High-tech PC": {name: "High-tech PC", expense: 50000, effect: 3, description: "Tech xp"},
     "Study desk": {name: "Study desk", expense: 1000000, effect: 2, description: "Skill xp"},
     "Library": {name: "Library", expense: 10000000, effect: 1.5, description: "Skill xp"},
 }
@@ -111,13 +111,13 @@ const jobCategories = {
 const skillCategories = {
     "Fundamentals": ["Concentration", "Productivity", "Bargaining", "Intelligence", "Meditation"],
     "Combat": ["Strength", "Battle tactics", "Muscle memory"],
-    "Magic": ["Mana control", "Immortality", "Time warping", "Super immortality"],
+    "Tech": ["Mind capacity", "Immortality", "Time warping", "Super immortality"],
     "Dark magic": ["Dark influence", "Evil control", "Intimidation", "Demon training", "Blood meditation", "Demon's wealth"]
 }
 
 const itemCategories = {
-    "Properties": ["Homeless", "Tent", "Wooden hut", "Cottage", "House", "Large house", "Small palace", "Grand palace"],
-    "Misc": ["Book", "Dumbbells", "Personal squire", "Steel longsword", "Butler", "Sapphire charm", "Study desk", "Library"]
+    "Properties": ["Homeless", "Shared room", "Rented room", "Small apartment", "House", "Large house", "Small manor", "Manor"],
+    "Misc": ["Book", "Dumbbells", "Training assistant", "XM7", "Personal assistant", "High-tech PC", "Study desk", "Library"]
 }
 
 const headerRowColors = {
@@ -126,7 +126,7 @@ const headerRowColors = {
     "The Arcane Association": "#C71585",
     "Fundamentals": "#4a4e69",
     "Combat": "#ff704d",
-    "Magic": "#875F9A",
+    "Tech": "#875F9A",
     "Dark magic": "#73000f",
     "Properties": "#219ebc",
     "Misc": "#b56576",
@@ -140,14 +140,14 @@ const tooltips = {
     "Construction worker": "Carry construction material and occassionally hammer a nail or two. The pay is alright but comes with a lot heavy physical work.",
     "Shop clerk": "Sit behind a cash register and occasionally restock shelves. The job pays decently well and is a lot less manually-intensive.",
 
-    "Recruit": "Carry around your knight's shield and sword along the battlefield. Very meager pay but the work experience is quite valuable.",
-    "Private": "Put down your life to battle with enemy soldiers. A courageous, respectable job but you are still worthless in the grand scheme of things.",
-    "Corporal": "More experienced and useful than the average footman, take out the enemy forces in battle with your might. The pay is not that bad.",
-    "Sergeant": "Slash and pierce through enemy soldiers with ease, while covered in steel from head to toe. A decently paying and very respectable job.",
-    "Lieutenant": "Utilising your unmatched combat ability, slaugher enemies effortlessly. Most footmen in the military would never be able to acquire such a well paying job like this.",
-    "Major": "Obliterate squadrons of enemy soldiers in one go with extraordinary proficiency, while equipped with the finest gear. Such a feared unit on the battlefield is paid extremely well.",
-    "Lieutenant General": "Collapse entire armies in mere seconds with your magically imbued blade. The handful of elite knights who attain this level of power are showered with coins.",
-    "Secretary of Defense": "Feared worldwide, obliterate entire nations in a blink of an eye. Roughly every century, only one holy knight is worthy of receiving such an esteemed title.",
+    "Recruit": "A newbie in the army. Training hard every day to becomea real soldier. The pay is meager but the effort will be worth it.",
+    "Private": "Protect your nation, fight for honor! A good paying and respectable job, though nothing to boast about.",
+    "Corporal": "Traversing the ranks, increasing your pay. Your effort and hard work will not be for nothing.",
+    "Sergeant": "You are feared by your subordinates, respected by your superiors. Your high pay is deserved.",
+    "Lieutenant": "You went above and beyond and finally achieved the position of officer in the army. Such a high rank comes with its benefits.",
+    "Major": "Becoming an officer wasn't enough, you wanted more. Though reaching the position of General is a tough task, you believe in yourself.",
+    "Lieutenant General": "At the top of the army, you earn tons of money and you're respected by thousands of soldiers. Will you go further?",
+    "Secretary of Defense": "Reaching for the stars, you administrate the whole army and work directly under the president! You may boast about your wealth.",
 
     "Student": "Study the theory of mana and practice basic spells. There is minor pay to cover living costs, however, this is a necessary stage in becoming a mage.",
     "Apprentice mage": "Under the supervision of a mage, perform basic spells against enemies in battle. Generous pay will be provided to cover living costs.",
@@ -166,9 +166,9 @@ const tooltips = {
     "Battle tactics": "Create and revise battle strategies, improving experience gained in the military.",
     "Muscle memory": "Strengthen your neurons through habit and repetition, improving strength gains throughout the body.",
 
-    "Mana control": "Strengthen your mana channels throughout your body, aiding you in becoming a more powerful magical user.",
-    "Immortality": "Lengthen your lifespan through the means of magic. However, is this truly the immortality you have tried seeking for...?",
-    "Time warping": "Bend space and time through forbidden techniques, resulting in a faster gamespeed.",
+    "Mind capacity": "Broaden your mind, increase your intellect, and achieve a deeper understanding of the universe.",
+    "Immortality": "Lengthen your lifespan with highly advanced technology. Is this the end...?",
+    "Time warping": "Use nano technology to increase how fast you experience the world, resulting in a faster gamespeed.",
     "Super immortality": "Through harnessing ancient, forbidden techniques, lengthen your lifespan drastically beyond comprehension.",
 
     "Dark influence": "Encompass yourself with formidable power bestowed upon you by evil, allowing you to pick up and absorb any job or skill with ease.",
@@ -179,22 +179,22 @@ const tooltips = {
     "Demon's wealth": "Through the means of dark magic, multiply the raw matter of the coins you receive from your job.",
 
     "Homeless": "Sleep on the uncomfortable, filthy streets while almost freezing to death every night. It cannot get any worse than this.",
-    "Tent": "A thin sheet of tattered cloth held up by a couple of feeble, wooden sticks. Horrible living conditions but at least you have a roof over your head.",
-    "Wooden hut": "Shabby logs and dirty hay glued together with horse manure. Much more sturdy than a tent, however, the stench isn't very pleasant.",
-    "Cottage": "Structured with a timber frame and a thatched roof. Provides decent living conditions for a fair price.",
-    "House": "A building formed from stone bricks and sturdy timber, which contains a few rooms. Although quite expensive, it is a comfortable abode.",
+    "Shared room": "A smelly and dirty room bunk-bed room which you share with a stranger. At least you have a roof over your head.",
+    "Rented room": "Though the room is quite small, it comes with a small fridge and a toilet. Now you can enjoy some alone time.",
+    "Small apartment": "A small quaint little apartment with multiple rooms and a city view. Comes with a lot of benefits but also a price.",
+    "House": "A good sized house fit for a small family, or just yourself. These luxuries come at a price.",
     "Large house": "Much larger than a regular house, which boasts even more rooms and multiple floors. The building is quite spacious but comes with a hefty price tag.",
-    "Small palace": "A very rich and meticulously built structure rimmed with fine metals such as silver. Extremely high expenses to maintain for a lavish lifestyle.",
-    "Grand palace": "A grand residence completely composed of gold and silver. Provides the utmost luxurious and comfortable living conditions possible for a ludicrous price.",
+    "Small manor": "A very rich and meticulously built structure rimmed with fine metals such as silver. Extremely high expenses to maintain for a lavish lifestyle.",
+    "Manor": "A grand residence with an enormous garden. Provides the utmost luxurious and comfortable living conditions possible for a ludicrous price.",
 
     "Book": "A place to write down all your thoughts and discoveries, allowing you to learn a lot more quickly.",
     "Dumbbells": "Heavy tools used in strenuous exercise to toughen up and accumulate strength even faster than before. ",
-    "Personal squire": "Assists you in completing day to day activities, giving you more time to be productive at work.",
-    "Steel longsword": "A fine blade used to slay enemies even quicker in combat and therefore gain more experience.",
-    "Butler": "Keeps your household clean at all times and also prepares three delicious meals per day, leaving you in a happier, stress-free mood.",
-    "Sapphire charm": "Embedded with a rare sapphire, this charm activates more mana channels within your body, providing a much easier time learning magic.",
+    "Training assistant": "Assists you with training giving you an easier time at work.",
+    "XM7": "An advanced assault rifle making it easier to perform warfare duties thus earning you more experience.",
+    "Personal assistant": "Prepares your meals and cleans your house, leaving you in a happier, stress-free mood.",
+    "High-tech PC": "With the latest advanced technologies, this PC makes it easier to improve your IT skills and mind capacity.",
     "Study desk": "A dedicated area which provides many fine stationary and equipment designed for furthering your progress in research.",
-    "Library": "Stores a collection of books, each containing vast amounts of information from basic life skills to complex magic spells.",
+    "Library": "Stores a collection of books, each containing vast amounts of information from basic life skills to complex algorithms.",
 }
 
 const units = ["", "k", "M", "B", "T", "q", "Q", "Sx", "Sp", "Oc"];
@@ -232,7 +232,7 @@ function addMultipliers() {
             task.incomeMultipliers.push(getBindedTaskEffect("Intelligence"))
             task.incomeMultipliers.push(getBindedTaskEffect("Demon's wealth"))
             task.xpMultipliers.push(getBindedTaskEffect("Productivity"))
-            task.xpMultipliers.push(getBindedItemEffect("Personal squire"))    
+            task.xpMultipliers.push(getBindedItemEffect("Training assistant"))    
         } else if (task instanceof Skill) {
             task.xpMultipliers.push(getBindedTaskEffect("Concentration"))
             task.xpMultipliers.push(getBindedItemEffect("Book"))
@@ -243,14 +243,14 @@ function addMultipliers() {
         if (jobCategories["Military"].includes(task.name)) {
             task.incomeMultipliers.push(getBindedTaskEffect("Strength"))
             task.xpMultipliers.push(getBindedTaskEffect("Battle tactics"))
-            task.xpMultipliers.push(getBindedItemEffect("Steel longsword"))
+            task.xpMultipliers.push(getBindedItemEffect("XM7"))
         } else if (task.name == "Strength") {
             task.xpMultipliers.push(getBindedTaskEffect("Muscle memory"))
             task.xpMultipliers.push(getBindedItemEffect("Dumbbells"))
-        } else if (skillCategories["Magic"].includes(task.name)) {
-            task.xpMultipliers.push(getBindedItemEffect("Sapphire charm"))
+        } else if (skillCategories["Tech"].includes(task.name)) {
+            task.xpMultipliers.push(getBindedItemEffect("High-tech PC"))
         } else if (jobCategories["The Arcane Association"].includes(task.name)) {
-            task.xpMultipliers.push(getBindedTaskEffect("Mana control"))
+            task.xpMultipliers.push(getBindedTaskEffect("Mind capacity"))
         } else if (skillCategories["Dark magic"].includes(task.name)) {
             task.xpMultipliers.push(getEvil)
         }
@@ -294,7 +294,7 @@ function setCustomEffects() {
 
 function getHappiness() {
     var meditationEffect = getBindedTaskEffect("Meditation")
-    var butlerEffect = getBindedItemEffect("Butler")
+    var butlerEffect = getBindedItemEffect("Personal assistant")
     var happiness = meditationEffect() * butlerEffect() * gameData.currentProperty.getEffect()
     return happiness
 }
@@ -1062,7 +1062,7 @@ gameData.requirements = {
     //Other
     "The Arcane Association": new TaskRequirement(getElementsByClass("The Arcane Association"), [{task: "Concentration", requirement: 200}, {task: "Meditation", requirement: 200}]),
     "Dark magic": new EvilRequirement(getElementsByClass("Dark magic"), [{requirement: 1}]),
-    "Shop": new CoinRequirement([document.getElementById("shopTabButton")], [{requirement: gameData.itemData["Tent"].getExpense() * 50}]),
+    "Shop": new CoinRequirement([document.getElementById("shopTabButton")], [{requirement: gameData.itemData["Shared room"].getExpense() * 50}]),
     "Rebirth tab": new AgeRequirement([document.getElementById("rebirthTabButton")], [{requirement: 25}]),
     "Rebirth note 1": new AgeRequirement([document.getElementById("rebirthNote1")], [{requirement: 45}]),
     "Rebirth note 2": new AgeRequirement([document.getElementById("rebirthNote2")], [{requirement: 65}]),
@@ -1080,23 +1080,23 @@ gameData.requirements = {
     "Construction worker": new TaskRequirement([getTaskElement("Construction worker")], [{task: "Strength", requirement: 25}, {task: "Janitor", requirement: 10}]),
     "Shop clerk": new TaskRequirement([getTaskElement("Shop clerk")], [{task: "Bargaining", requirement: 50}, {task: "Intelligence", requirement: 30}, {task: "Construction worker", requirement: 10}]),
 
-    //Military 
+    //Military
     "Recruit": new TaskRequirement([getTaskElement("Recruit")], [{task: "Strength", requirement: 5}]),
     "Private": new TaskRequirement([getTaskElement("Private")], [{task: "Strength", requirement: 20}, {task: "Recruit", requirement: 10}]),
     "Corporal": new TaskRequirement([getTaskElement("Corporal")], [{task: "Battle tactics", requirement: 40}, {task: "Private", requirement: 10}]),
     "Sergeant": new TaskRequirement([getTaskElement("Sergeant")], [{task: "Strength", requirement: 100}, {task: "Corporal", requirement: 10}]),
-    "Lieutenant": new TaskRequirement([getTaskElement("Lieutenant")], [{task: "Battle tactics", requirement: 150}, {task: "Sergeant", requirement: 10}]),
-    "Major": new TaskRequirement([getTaskElement("Major")], [{task: "Strength", requirement: 300}, {task: "Lieutenant", requirement: 10}]),
-    "Lieutenant General": new TaskRequirement([getTaskElement("Lieutenant General")], [{task: "Mana control", requirement: 500}, {task: "Major", requirement: 10}]),
-    "Secretary of Defense": new TaskRequirement([getTaskElement("Secretary of Defense")], [{task: "Mana control", requirement: 1000}, {task: "Battle tactics", requirement: 1000}, {task: "Lieutenant General", requirement: 10}]),
+    "Lieutenant": new TaskRequirement([getTaskElement("Lieutenant")], [{task: "Intelligence", requirement: 100}, {task: "Battle tactics", requirement: 150}, {task: "Sergeant", requirement: 10}]),
+    "Major": new TaskRequirement([getTaskElement("Major")], [{task: "Intelligence", requirement: 200}, {task: "Strength", requirement: 300}, {task: "Lieutenant", requirement: 10}]),
+    "Lieutenant General": new TaskRequirement([getTaskElement("Lieutenant General")], [{task: "Intelligence", requirement: 500}, {task: "Major", requirement: 10}]),
+    "Secretary of Defense": new TaskRequirement([getTaskElement("Secretary of Defense")], [{task: "Intelligence", requirement: 1000}, {task: "Battle tactics", requirement: 1000}, {task: "Lieutenant General", requirement: 10}]),
 
     //The Arcane Association
     "Student": new TaskRequirement([getTaskElement("Student")], [{task: "Concentration", requirement: 200}, {task: "Meditation", requirement: 200}]),
-    "Apprentice mage": new TaskRequirement([getTaskElement("Apprentice mage")], [{task: "Mana control", requirement: 400}, {task: "Student", requirement: 10}]),
-    "Mage": new TaskRequirement([getTaskElement("Mage")], [{task: "Mana control", requirement: 700}, {task: "Apprentice mage", requirement: 10}]),
-    "Wizard": new TaskRequirement([getTaskElement("Wizard")], [{task: "Mana control", requirement: 1000}, {task: "Mage", requirement: 10}]),
-    "Master wizard": new TaskRequirement([getTaskElement("Master wizard")], [{task: "Mana control", requirement: 1500}, {task: "Wizard", requirement: 10}]),
-    "Chairman": new TaskRequirement([getTaskElement("Chairman")], [{task: "Mana control", requirement: 2000}, {task: "Master wizard", requirement: 10}]),
+    "Apprentice mage": new TaskRequirement([getTaskElement("Apprentice mage")], [{task: "Mind capacity", requirement: 400}, {task: "Student", requirement: 10}]),
+    "Mage": new TaskRequirement([getTaskElement("Mage")], [{task: "Mind capacity", requirement: 700}, {task: "Apprentice mage", requirement: 10}]),
+    "Wizard": new TaskRequirement([getTaskElement("Wizard")], [{task: "Mind capacity", requirement: 1000}, {task: "Mage", requirement: 10}]),
+    "Master wizard": new TaskRequirement([getTaskElement("Master wizard")], [{task: "Mind capacity", requirement: 1500}, {task: "Wizard", requirement: 10}]),
+    "Chairman": new TaskRequirement([getTaskElement("Chairman")], [{task: "Mind capacity", requirement: 2000}, {task: "Master wizard", requirement: 10}]),
 
     //Fundamentals
     "Concentration": new TaskRequirement([getTaskElement("Concentration")], []),
@@ -1111,7 +1111,7 @@ gameData.requirements = {
     "Muscle memory": new TaskRequirement([getTaskElement("Muscle memory")], [{task: "Concentration", requirement: 30}, {task: "Strength", requirement: 30}]),
 
     //Magic
-    "Mana control": new TaskRequirement([getTaskElement("Mana control")], [{task: "Concentration", requirement: 200}, {task: "Meditation", requirement: 200}]),
+    "Mind capacity": new TaskRequirement([getTaskElement("Mind capacity")], [{task: "Concentration", requirement: 200}, {task: "Intelligence", requirement: 200}]),
     "Immortality": new TaskRequirement([getTaskElement("Immortality")], [{task: "Apprentice mage", requirement: 10}]),
     "Time warping": new TaskRequirement([getTaskElement("Time warping")], [{task: "Mage", requirement: 10}]),
     "Super immortality": new TaskRequirement([getTaskElement("Super immortality")], [{task: "Chairman", requirement: 1000}]),
@@ -1126,21 +1126,21 @@ gameData.requirements = {
 
     //Properties
     "Homeless": new CoinRequirement([getItemElement("Homeless")], [{requirement: 0}]),
-    "Tent": new CoinRequirement([getItemElement("Tent")], [{requirement: 0}]),
-    "Wooden hut": new CoinRequirement([getItemElement("Wooden hut")], [{requirement: gameData.itemData["Wooden hut"].getExpense() * 100}]),
-    "Cottage": new CoinRequirement([getItemElement("Cottage")], [{requirement: gameData.itemData["Cottage"].getExpense() * 100}]),
+    "Shared room": new CoinRequirement([getItemElement("Shared room")], [{requirement: 0}]),
+    "Rented room": new CoinRequirement([getItemElement("Rented room")], [{requirement: gameData.itemData["Rented room"].getExpense() * 100}]),
+    "Small apartment": new CoinRequirement([getItemElement("Small apartment")], [{requirement: gameData.itemData["Small apartment"].getExpense() * 100}]),
     "House": new CoinRequirement([getItemElement("House")], [{requirement: gameData.itemData["House"].getExpense() * 100}]),
     "Large house": new CoinRequirement([getItemElement("Large house")], [{requirement: gameData.itemData["Large house"].getExpense() * 100}]),
-    "Small palace": new CoinRequirement([getItemElement("Small palace")], [{requirement: gameData.itemData["Small palace"].getExpense() * 100}]),
-    "Grand palace": new CoinRequirement([getItemElement("Grand palace")], [{requirement: gameData.itemData["Grand palace"].getExpense() * 100}]),
+    "Small manor": new CoinRequirement([getItemElement("Small manor")], [{requirement: gameData.itemData["Small manor"].getExpense() * 100}]),
+    "Manor": new CoinRequirement([getItemElement("Manor")], [{requirement: gameData.itemData["Manor"].getExpense() * 100}]),
 
     //Misc
     "Book": new CoinRequirement([getItemElement("Book")], [{requirement: 0}]),
     "Dumbbells": new CoinRequirement([getItemElement("Dumbbells")], [{requirement: gameData.itemData["Dumbbells"].getExpense() * 100}]),
-    "Personal squire": new CoinRequirement([getItemElement("Personal squire")], [{requirement: gameData.itemData["Personal squire"].getExpense() * 100}]),
-    "Steel longsword": new CoinRequirement([getItemElement("Steel longsword")], [{requirement: gameData.itemData["Steel longsword"].getExpense() * 100}]),
-    "Butler": new CoinRequirement([getItemElement("Butler")], [{requirement: gameData.itemData["Butler"].getExpense() * 100}]),
-    "Sapphire charm": new CoinRequirement([getItemElement("Sapphire charm")], [{requirement: gameData.itemData["Sapphire charm"].getExpense() * 100}]),
+    "Training assistant": new CoinRequirement([getItemElement("Training assistant")], [{requirement: gameData.itemData["Training assistant"].getExpense() * 100}]),
+    "XM7": new CoinRequirement([getItemElement("XM7")], [{requirement: gameData.itemData["XM7"].getExpense() * 100}]),
+    "Personal assistant": new CoinRequirement([getItemElement("Personal assistant")], [{requirement: gameData.itemData["Personal assistant"].getExpense() * 100}]),
+    "High-tech PC": new CoinRequirement([getItemElement("High-tech PC")], [{requirement: gameData.itemData["High-tech PC"].getExpense() * 100}]),
     "Study desk": new CoinRequirement([getItemElement("Study desk")], [{requirement: gameData.itemData["Study desk"].getExpense() * 100}]),
     "Library": new CoinRequirement([getItemElement("Library")], [{requirement: gameData.itemData["Library"].getExpense() * 100}]), 
 }
