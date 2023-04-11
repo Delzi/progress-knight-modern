@@ -40,14 +40,14 @@ const jobBaseData = {
     "Construction worker": {name: "Construction worker", maxXp: 800, income: 14*100},
     "Shop clerk": {name: "Shop clerk", maxXp: 1600, income: 40*100},
 
-    "Squire": {name: "Squire", maxXp: 100, income: 5},
-    "Footman": {name: "Footman", maxXp: 1000, income: 50},
-    "Veteran footman": {name: "Veteran footman", maxXp: 10000, income: 120},
-    "Knight": {name: "Knight", maxXp: 100000, income: 300},
-    "Veteran knight": {name: "Veteran knight", maxXp: 1000000, income: 1000},
-    "Elite knight": {name: "Elite knight", maxXp: 7500000, income: 3000},
-    "Holy knight": {name: "Holy knight", maxXp: 40000000, income: 15000},
-    "Legendary knight": {name: "Legendary knight", maxXp: 150000000, income: 50000},
+    "Recruit": {name: "Recruit", maxXp: 100, income: 5},
+    "Private": {name: "Private", maxXp: 1000, income: 50},
+    "Corporal": {name: "Corporal", maxXp: 10000, income: 120},
+    "Sergeant": {name: "Sergeant", maxXp: 100000, income: 300},
+    "Lieutenant": {name: "Lieutenant", maxXp: 1000000, income: 1000},
+    "Major": {name: "Major", maxXp: 7500000, income: 3000},
+    "Lieutenant General": {name: "Lieutenant General", maxXp: 40000000, income: 15000},
+    "Secretary of Defense": {name: "Secretary of Defense", maxXp: 150000000, income: 50000},
 
     "Student": {name: "Student", maxXp: 100000, income: 100},
     "Apprentice mage": {name: "Apprentice mage", maxXp: 1000000, income: 1000},
@@ -104,7 +104,7 @@ const itemBaseData = {
 
 const jobCategories = {
     "Common work": ["Beggar", "Street entertainer", "Newspaper vendor", "Construction worker", "Janitor", "Shop clerk"],
-    "Military" : ["Squire", "Footman", "Veteran footman", "Knight", "Veteran knight", "Elite knight", "Holy knight", "Legendary knight"],
+    "Military" : ["Recruit", "Private", "Corporal", "Sergeant", "Lieutenant", "Major", "Lieutenant General", "Secretary of Defense"],
     "The Arcane Association" : ["Student", "Apprentice mage", "Mage", "Wizard", "Master wizard", "Chairman"]
 }
 
@@ -140,14 +140,14 @@ const tooltips = {
     "Construction worker": "Carry construction material and occassionally hammer a nail or two. The pay is alright but comes with a lot heavy physical work.",
     "Shop clerk": "Sit behind a cash register and occasionally restock shelves. The job pays decently well and is a lot less manually-intensive.",
 
-    "Squire": "Carry around your knight's shield and sword along the battlefield. Very meager pay but the work experience is quite valuable.",
-    "Footman": "Put down your life to battle with enemy soldiers. A courageous, respectable job but you are still worthless in the grand scheme of things.",
-    "Veteran footman": "More experienced and useful than the average footman, take out the enemy forces in battle with your might. The pay is not that bad.",
-    "Knight": "Slash and pierce through enemy soldiers with ease, while covered in steel from head to toe. A decently paying and very respectable job.",
-    "Veteran knight": "Utilising your unmatched combat ability, slaugher enemies effortlessly. Most footmen in the military would never be able to acquire such a well paying job like this.",
-    "Elite knight": "Obliterate squadrons of enemy soldiers in one go with extraordinary proficiency, while equipped with the finest gear. Such a feared unit on the battlefield is paid extremely well.",
-    "Holy knight": "Collapse entire armies in mere seconds with your magically imbued blade. The handful of elite knights who attain this level of power are showered with coins.",
-    "Legendary knight": "Feared worldwide, obliterate entire nations in a blink of an eye. Roughly every century, only one holy knight is worthy of receiving such an esteemed title.",
+    "Recruit": "Carry around your knight's shield and sword along the battlefield. Very meager pay but the work experience is quite valuable.",
+    "Private": "Put down your life to battle with enemy soldiers. A courageous, respectable job but you are still worthless in the grand scheme of things.",
+    "Corporal": "More experienced and useful than the average footman, take out the enemy forces in battle with your might. The pay is not that bad.",
+    "Sergeant": "Slash and pierce through enemy soldiers with ease, while covered in steel from head to toe. A decently paying and very respectable job.",
+    "Lieutenant": "Utilising your unmatched combat ability, slaugher enemies effortlessly. Most footmen in the military would never be able to acquire such a well paying job like this.",
+    "Major": "Obliterate squadrons of enemy soldiers in one go with extraordinary proficiency, while equipped with the finest gear. Such a feared unit on the battlefield is paid extremely well.",
+    "Lieutenant General": "Collapse entire armies in mere seconds with your magically imbued blade. The handful of elite knights who attain this level of power are showered with coins.",
+    "Secretary of Defense": "Feared worldwide, obliterate entire nations in a blink of an eye. Roughly every century, only one holy knight is worthy of receiving such an esteemed title.",
 
     "Student": "Study the theory of mana and practice basic spells. There is minor pay to cover living costs, however, this is a necessary stage in becoming a mage.",
     "Apprentice mage": "Under the supervision of a mage, perform basic spells against enemies in battle. Generous pay will be provided to cover living costs.",
@@ -1081,14 +1081,14 @@ gameData.requirements = {
     "Shop clerk": new TaskRequirement([getTaskElement("Shop clerk")], [{task: "Bargaining", requirement: 50}, {task: "Intelligence", requirement: 30}, {task: "Construction worker", requirement: 10}]),
 
     //Military 
-    "Squire": new TaskRequirement([getTaskElement("Squire")], [{task: "Strength", requirement: 5}]),
-    "Footman": new TaskRequirement([getTaskElement("Footman")], [{task: "Strength", requirement: 20}, {task: "Squire", requirement: 10}]),
-    "Veteran footman": new TaskRequirement([getTaskElement("Veteran footman")], [{task: "Battle tactics", requirement: 40}, {task: "Footman", requirement: 10}]),
-    "Knight": new TaskRequirement([getTaskElement("Knight")], [{task: "Strength", requirement: 100}, {task: "Veteran footman", requirement: 10}]),
-    "Veteran knight": new TaskRequirement([getTaskElement("Veteran knight")], [{task: "Battle tactics", requirement: 150}, {task: "Knight", requirement: 10}]),
-    "Elite knight": new TaskRequirement([getTaskElement("Elite knight")], [{task: "Strength", requirement: 300}, {task: "Veteran knight", requirement: 10}]),
-    "Holy knight": new TaskRequirement([getTaskElement("Holy knight")], [{task: "Mana control", requirement: 500}, {task: "Elite knight", requirement: 10}]),
-    "Legendary knight": new TaskRequirement([getTaskElement("Legendary knight")], [{task: "Mana control", requirement: 1000}, {task: "Battle tactics", requirement: 1000}, {task: "Holy knight", requirement: 10}]),
+    "Recruit": new TaskRequirement([getTaskElement("Recruit")], [{task: "Strength", requirement: 5}]),
+    "Private": new TaskRequirement([getTaskElement("Private")], [{task: "Strength", requirement: 20}, {task: "Recruit", requirement: 10}]),
+    "Corporal": new TaskRequirement([getTaskElement("Corporal")], [{task: "Battle tactics", requirement: 40}, {task: "Private", requirement: 10}]),
+    "Sergeant": new TaskRequirement([getTaskElement("Sergeant")], [{task: "Strength", requirement: 100}, {task: "Corporal", requirement: 10}]),
+    "Lieutenant": new TaskRequirement([getTaskElement("Lieutenant")], [{task: "Battle tactics", requirement: 150}, {task: "Sergeant", requirement: 10}]),
+    "Major": new TaskRequirement([getTaskElement("Major")], [{task: "Strength", requirement: 300}, {task: "Lieutenant", requirement: 10}]),
+    "Lieutenant General": new TaskRequirement([getTaskElement("Lieutenant General")], [{task: "Mana control", requirement: 500}, {task: "Major", requirement: 10}]),
+    "Secretary of Defense": new TaskRequirement([getTaskElement("Secretary of Defense")], [{task: "Mana control", requirement: 1000}, {task: "Battle tactics", requirement: 1000}, {task: "Lieutenant General", requirement: 10}]),
 
     //The Arcane Association
     "Student": new TaskRequirement([getTaskElement("Student")], [{task: "Concentration", requirement: 200}, {task: "Meditation", requirement: 200}]),
