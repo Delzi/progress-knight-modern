@@ -34,11 +34,11 @@ const permanentUnlocks = ["Scheduling", "Shop", "Automation", "Quick task displa
 
 const jobBaseData = {
     "Beggar": {name: "Beggar", maxXp: 50, income: 1*100},
-    "Street Entertainer": {name: "Street Entertainer", maxXp: 100, income: 1.75*100},
-    "Newspaper Vendor": {name: "Newspaper Vendor", maxXp: 200, income: 3*100},
+    "Street entertainer": {name: "Street entertainer", maxXp: 100, income: 1.75*100},
+    "Newspaper vendor": {name: "Newspaper vendor", maxXp: 200, income: 3*100},
     "Janitor": {name: "Janitor", maxXp: 400, income: 7*100},
-    "Construction Worker": {name: "Construction Worker", maxXp: 800, income: 14*100},
-    "Shop Clerk": {name: "Shop Clerk", maxXp: 1600, income: 40*100},
+    "Construction worker": {name: "Construction worker", maxXp: 800, income: 14*100},
+    "Shop clerk": {name: "Shop clerk", maxXp: 1600, income: 40*100},
 
     "Squire": {name: "Squire", maxXp: 100, income: 5},
     "Footman": {name: "Footman", maxXp: 1000, income: 50},
@@ -554,7 +554,6 @@ function updateTaskRows() {
     for (key in gameData.taskData) {
         var task = gameData.taskData[key]
         var row = document.getElementById("row " + task.name)
-        print(row)
         if (row) {
             row.getElementsByClassName("level")[0].textContent = task.level
             row.getElementsByClassName("xpGain")[0].textContent = format(task.getXpGain())
@@ -581,7 +580,7 @@ function updateTaskRows() {
                 valueElement.getElementsByClassName("effect")[0].textContent = task.getEffectDescription()
             }
           } else {
-            console.log("Not found");
+            console.log(key);
           }
     }
 }
@@ -1075,11 +1074,11 @@ gameData.requirements = {
 
     //Common work
     "Beggar": new TaskRequirement([getTaskElement("Beggar")], []),
-    "Street Entertainer": new TaskRequirement([getTaskElement("Street Entertainer")], [{task: "Beggar", requirement: 10}]),
-    "Newspaper Vendor": new TaskRequirement([getTaskElement("Newspaper Vendor")], [{task: "Street Entertainer", requirement: 10}]),
-    "Janitor": new TaskRequirement([getTaskElement("Janitor")], [{task: "Newspaper Vendor", requirement: 10}]),
-    "Construction Worker": new TaskRequirement([getTaskElement("Construction Worker")], [{task: "Strength", requirement: 25}, {task: "Janitor", requirement: 10}]),
-    "Shop Clerk": new TaskRequirement([getTaskElement("Shop Clerk")], [{task: "Bargaining", requirement: 50}, {task: "Intelligence", requirement: 30}, {task: "Construction Worker", requirement: 10}]),
+    "Street entertainer": new TaskRequirement([getTaskElement("Street entertainer")], [{task: "Beggar", requirement: 10}]),
+    "Newspaper vendor": new TaskRequirement([getTaskElement("Newspaper vendor")], [{task: "Street entertainer", requirement: 10}]),
+    "Janitor": new TaskRequirement([getTaskElement("Janitor")], [{task: "Newspaper vendor", requirement: 10}]),
+    "Construction worker": new TaskRequirement([getTaskElement("Construction worker")], [{task: "Strength", requirement: 25}, {task: "Janitor", requirement: 10}]),
+    "Shop clerk": new TaskRequirement([getTaskElement("Shop clerk")], [{task: "Bargaining", requirement: 50}, {task: "Intelligence", requirement: 30}, {task: "Construction worker", requirement: 10}]),
 
     //Military 
     "Squire": new TaskRequirement([getTaskElement("Squire")], [{task: "Strength", requirement: 5}]),
