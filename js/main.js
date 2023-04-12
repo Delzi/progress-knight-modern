@@ -28,7 +28,7 @@ const updateSpeed = 60
 
 const baseLifespan = 365 * 70
 
-const baseGameSpeed = 1/2
+const baseGameSpeed = 6
 
 const permanentUnlocks = ["Scheduling", "Shop", "Automation", "Quick task display"]
 
