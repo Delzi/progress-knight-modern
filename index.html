@@ -125,15 +125,19 @@
                     </tr>
                 </template>
 
-                <template class="headerRowItemTemplate">
-                    <tr>
-                        <th class="category" style="width: 250px">Item</th>
-                        <th style="width: 100px">Active</th>
-                        <th style="width: 250px">Effect</th>
+                <<template class="headerRowItemTemplate">                        
+                    <tr class="item-header-row" onclick="forceAutobuy()">
+                        <th class="category" style="width: 20em">
+                            <button class="button-no-button tooltip" style="background-color:transparent;" onclick="forceAutobuy()">
+                                <span class="name">Item</span>
+                                <span class="tooltipText">Click to activate auto-buy</span>
+                             </button>
+                        </th>
+                        <th>Active</th>
+                        <th style="width: 22em">Effect</th>
                         <th>Expense/day</th>
-                    </tr>
+                    </tr>                        
                 </template>
-
                 <template class="rowTaskTemplate">
                     <tr>
                         <td>
