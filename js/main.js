@@ -104,6 +104,7 @@ const itemBaseData = {
 
 const jobCategories = {
     "Common work": ["Beggar", "Street entertainer", "Newspaper vendor", "Construction worker", "Janitor", "Shop clerk"],
+    "Macrosoft" : ["Unpaid Intern", "Engineer", "Regional Manager", "Department Head", "Director", "Vice President", "President", "CEO"],
     "Military" : ["Recruit", "Private", "Corporal", "Sergeant", "Lieutenant", "Major", "Lieutenant General", "Secretary of Defense"],
     "The Arcane Association" : ["Student", "Apprentice mage", "Mage", "Wizard", "Master wizard", "Chairman"]
 }
@@ -123,6 +124,7 @@ const itemCategories = {
 const headerRowColors = {
     "Common work": "#55a630",
     "Military": "#e63946",
+    "Macrosoft": "#0084ff",
     "The Arcane Association": "#C71585",
     "Fundamentals": "#4a4e69",
     "Combat": "#ff704d",
@@ -140,6 +142,15 @@ const tooltips = {
     "Construction worker": "Carry construction material and occassionally hammer a nail or two. The pay is alright but comes with a lot heavy physical work.",
     "Shop clerk": "Sit behind a cash register and occasionally restock shelves. The job pays decently well and is a lot less manually-intensive.",
 
+    "Unpaid Intern": "",
+    "Engineer": "",
+    "Regional Manager": "",
+    "Department Head": "",
+    "Director": "",
+    "Vice President": "",
+    "President": "",
+    "CEO": "",
+    
     "Recruit": "A newbie in the army. Training hard every day to becomea real soldier. The pay is meager but the effort will be worth it.",
     "Private": "Protect your nation, fight for honor! A good paying and respectable job, though nothing to boast about.",
     "Corporal": "Traversing the ranks, increasing your pay. Your effort and hard work will not be for nothing.",
@@ -1080,6 +1091,16 @@ gameData.requirements = {
     "Construction worker": new TaskRequirement([getTaskElement("Construction worker")], [{task: "Strength", requirement: 25}, {task: "Janitor", requirement: 10}]),
     "Shop clerk": new TaskRequirement([getTaskElement("Shop clerk")], [{task: "Bargaining", requirement: 50}, {task: "Intelligence", requirement: 30}, {task: "Construction worker", requirement: 10}]),
 
+    // Macrosoft
+    "Unpaid Intern": new TaskRequirement([getTaskElement("Unpaid Intern")], [{task: "Strength", requirement: 5}]),
+    "Engineer": new TaskRequirement([getTaskElement("Engineer")], [{task: "Strength", requirement: 5}]),
+    "Regional Manager": new TaskRequirement([getTaskElement("Regional Manager")], [{task: "Strength", requirement: 5}]),
+    "Department Head": new TaskRequirement([getTaskElement("Department Head")], [{task: "Strength", requirement: 5}]),
+    "Director": new TaskRequirement([getTaskElement("Director")], [{task: "Strength", requirement: 5}]),
+    "Vice President": new TaskRequirement([getTaskElement("Vice President")], [{task: "Strength", requirement: 5}]),
+    "President": new TaskRequirement([getTaskElement("President")], [{task: "Strength", requirement: 5}]),
+    "CEO": new TaskRequirement([getTaskElement("CEO")], [{task: "Strength", requirement: 5}]),
+    
     //Military
     "Recruit": new TaskRequirement([getTaskElement("Recruit")], [{task: "Strength", requirement: 5}]),
     "Private": new TaskRequirement([getTaskElement("Private")], [{task: "Strength", requirement: 20}, {task: "Recruit", requirement: 10}]),
